@@ -3,7 +3,9 @@ const CarModel = require('../models/car');
 module.exports = {
     index,
     new: newListing,
-    create
+    create,
+    show,
+    all
 }
 
 function index(req,res){
@@ -21,21 +23,45 @@ function create(req, res){
 	CarModel.create(req.body)
 	.then(function(carWeCreatedInTheDb){
 			
-				// This function is the callback, to the create method, 
-				// so this functions gets called after we get a response from the database
-				// that we added the contents of the form (req.body) to the database
 				console.log(carWeCreatedInTheDb, " <- car document")
-				// Always respond to the client, in the cb function of the model
-				// because we want to make sure the database performed its job before 
-				// we respond to the client
 				res.redirect(`/cars/${carWeCreatedInTheDb._id}`); // 404 because we haven't made the index route yet
 		
 			}).catch((err) => {
 				console.log(err);
 				res.send('There was an error check the terminal, or log the err object')
 			})
-	// I like to use res.send just to check if I'm able to make an 
-	// http request to my POST, 
-	// res.send('Hitting the Post Route, check the terminal for the contents of the form')
 
 }
+
+function show(req, res) {
+	
+	CarModel.findById(req.params.id)
+			  .then(function(carDoc){
+				console.log(carDoc)
+					res.render('cars/show', {
+                        car: carDoc,
+                    })
+			  }).catch((err) =>{
+				console.log(err);
+				res.send(err)
+			  })
+  }
+
+  function all(req,res){
+    CarModel.find({})
+	// MovieModel.find is our mongoose model going to mongodb
+	// to find all the movies in the movies collection
+	// when the model comes back from the database
+	// we want a function to run
+	// that is the .then
+			  .then(function(allCars){
+
+				console.log(allCars, " <_ data from the db")
+				// respond to the client in the .then, we have to wait 
+				// for the data to come back from the database
+				res.render('cars/all', {cars: allCars})
+			  }).catch(function(err){
+				console.log(err);
+				res.send(err)
+			  })
+  }

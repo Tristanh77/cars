@@ -51,7 +51,6 @@ function create(req, res) {
       req.body.username = req.user.name;
       req.body.userId = req.user._id;
       req.body.userAvatar = req.user.avatar;
-
       carDocument.reviews.push(req.body);
       // you have to save the document to tell
       // mongodb you change something, cuz this

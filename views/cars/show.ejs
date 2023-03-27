@@ -39,5 +39,53 @@
     <% } %>
 
 
+    <% if (car.reviews.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Review</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% let total=0 %>
+            <% car.reviews.forEach(function(r) { %>
+              <% total +=r.rating %>
+                <tr>
+                  <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
+                    <%= r.userName %>
+                  </td>
+                  <td>
+                    <%= r.createdAt.toLocaleDateString() %>
+                  </td>
+                  <td>
+                    <%= r.content %>
+                  </td>
+                  <td>
+                    <%= r.rating %>
+                  </td>
+                  <td>
+                    <% if (user && user._id.equals(r.userId)) { %>
+                      <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button>
+                      </form>
+                    <% } %>
+                  </td>
+                </tr>
+                <% }); %>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td><strong>
+                        <%= (total / car.reviews.length).toFixed(1) %>
+                      </strong></td>
+                  </tr>
+        </tbody>
+      </table>
+      <% } else { %>
+        <h5>No Reviews Yet</h5>
+        <% } %>
+
+
 
 

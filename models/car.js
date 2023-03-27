@@ -25,7 +25,8 @@ const carSchema = new mongoose.Schema({
     },
     price: {
         type: String
-    }
+    },
+    reviews: [reviewSchema]
 })
 
 

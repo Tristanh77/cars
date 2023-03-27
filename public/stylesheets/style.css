@@ -18,3 +18,11 @@
 .collection-item form {
   margin-top: -5px;
 }
+
+img {
+  height: 20px;
+  width: 20px;
+}
+h1 {
+  font-size: 20px;
+}

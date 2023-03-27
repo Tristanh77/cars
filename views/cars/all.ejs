@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+    
+    
+    <% cars.forEach(function(c) { %>
+      <tr>
+        <td><%= c.year %></td>
+        <td><%= c.make %></td>
+        <td><%= c.model %></td>
+        <td><a href="/cars/<%= c._id %>">DETAILS</a></td>
+      </tr>
+      <% }); %>

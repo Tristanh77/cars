@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/cars" method="POST">
+  <label>Year:</label>
+  <input type="number" name="year">
+  <label>Make</label>
+  <select name="make">
+    <option value="Audi">Audi</option>
+    <option value="BMW">BMW</option>
+    <option value="Mercedes-Benz">Mercedes-Benz</option>
+    <option value="Porsche">Porsche</option>
+  </select>
+
+  <label>Model:</label>
+  <input type="text" name="model">
+
+
+  <label>Price:</label>
+  <input type="number" name="price">
+  <input type="submit" value="Add Listing">
+</form>

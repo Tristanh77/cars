@@ -1,6 +1,14 @@
 <%- include('../partials/header') %>
     
-    
+<table id="list">
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Price</th>
+    </tr>
+  </thead>
     <% cars.forEach(function(c) { %>
       <tr>
         <td><%= c.year %></td>

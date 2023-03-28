@@ -5,8 +5,9 @@ module.exports = {
     new: newListing,
     create,
     show,
-    all
+    all,
 }
+
 
 function index(req,res){
     res.render('cars/index')

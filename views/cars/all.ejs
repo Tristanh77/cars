@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+
+<h1 id="marketplace">Marketplace</h1>
     
 <table id="list">
   <thead>
@@ -11,10 +13,23 @@
   </thead>
     <% cars.forEach(function(c) { %>
       <tr>
-        <td><%= c.year %></td>
-        <td><%= c.make %></td>
-        <td><%= c.model %></td>
-        <td><%= c.price %></td>
-        <td><a href="/cars/<%= c._id %>">DETAILS</a></td>
+        <td class="data"><%= c.year %></td>
+        <td class="data"><%= c.make %></td>
+        <td class="data"><%= c.model %></td>
+        <td class="data"><%= c.price %></td>
+        <% if (c.make == "BMW") { %>
+          <td class="data"><img class= "pic" id= "bmwLogo" src="/images/bmw.jpeg" /></td>
+      <% } else if (c.make == "Audi") { %>
+        <td class="data"><img class= "pic" id= "audiLogo" src="/images/audi.png" /></td>
+        <% } else if (c.make == "Mercedes-Benz") { %>
+          <td class="data"><img class = "pic" id= "mercedesLogo" src="/images/mercedes.png" /></td>
+      <% } else { %>
+          <td class="data"><img class= "pic" id= "porscheLogo" src="/images/porsche.png" /></td>
+      <% } %>
+      
+           
+         
+        <td><a href="/cars/<%= c._id %>"><button>View Listing</button></a></td>
       </tr>
       <% }); %>
+</table>

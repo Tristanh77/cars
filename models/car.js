@@ -11,6 +11,18 @@ const questionSchema = new mongoose.Schema(
       timestamps: true,
     }
   );
+  const reviewSchema = new mongoose.Schema(
+    {
+      content: String,
+      rating: { type: Number, min: 1, max: 5, default: 5 },
+      userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+      username: String,
+      userAvatar: String
+    },
+    {
+      timestamps: true,
+    }
+  );
 
 const carSchema = new mongoose.Schema({
     year: {
@@ -26,6 +38,7 @@ const carSchema = new mongoose.Schema({
         type: String
     },
     questions: [questionSchema],
+    reviews: [reviewSchema],
     miles: {
         type: Number
     },

@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = new mongoose.Schema(
+const questionSchema = new mongoose.Schema(
     {
       content: String,
-      rating: { type: Number, min: 1, max: 5, default: 5 },
       userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
       username: String,
       userAvatar: String
@@ -26,7 +25,14 @@ const carSchema = new mongoose.Schema({
     price: {
         type: String
     },
-    reviews: [reviewSchema]
+    questions: [questionSchema],
+    miles: {
+        type: Number
+    },
+    description: {
+        type: String
+    }
+
 })
 
 

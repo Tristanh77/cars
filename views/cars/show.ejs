@@ -17,40 +17,40 @@
     <div>
       <%= car.price %>
     </div>
+    <div>Miles: </div>
+    <div>
+      <%= car.miles %>
+    </div>
+    <div>Description: </div>
+    <div>
+      <%= car.description %>
+    </div>
 
     <br><br>
-  <h2>Reviews</h2>
+  <h2>Questions</h2>
     <% if (user) { %>
-        <form id="add-review-form" method="POST" action="/cars/<%= car._id %>/reviews">
-            <label>Review:</label>
+        <form id="add-review-form" method="POST" action="/cars/<%= car._id %>/questions">
+            <label>Ask a Question:</label>
             <textarea name="content"></textarea>
-            <label>Rating:</label>
-            <select name="rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <input type="submit" value="Add Review">
+            <input type="submit" value="Ask Question">
           </form>
           <% } else { %>
-            Please log in to leave a review
+            Please log in to ask a question
     <% } %>
 
 
-    <% if (car.reviews.length) { %>
+    <% if (car.questions.length) { %>
       <table>
         <thead>
           <tr>
+            <th>User</th>
             <th>Date</th>
-            <th>Review</th>
-            <th>Rating</th>
+            <th> Question</th>
           </tr>
         </thead>
         <tbody>
           <% let total=0 %>
-            <% car.reviews.forEach(function(r) { %>
+            <% car.questions.forEach(function(r) { %>
               <% total +=r.rating %>
                 <tr>
                   <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
@@ -63,27 +63,22 @@
                     <%= r.content %>
                   </td>
                   <td>
-                    <%= r.rating %>
+                    <%= r.rating %> 
                   </td>
                   <td>
                     <% if (user && user._id.equals(r.userId)) { %>
-                      <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
+                        <form action="/questions/<%= r._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
                       </form>
                     <% } %>
                   </td>
                 </tr>
                 <% }); %>
-                  <tr>
-                    <td colspan="2"></td>
-                    <td><strong>
-                        <%= (total / car.reviews.length).toFixed(1) %>
-                      </strong></td>
-                  </tr>
+
         </tbody>
       </table>
       <% } else { %>
-        <h5>No Reviews Yet</h5>
+        <h5>No Questions Yet</h5>
         <% } %>
 
 

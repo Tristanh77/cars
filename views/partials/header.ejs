@@ -11,12 +11,12 @@
   <img id= logo src="/images/logo.png" />
   
   <nav>
-    <a href="/cars/all">Marketplace</a>
+    <a class= "navBar" href="/cars/all">Marketplace</a>
     <% if (user) { %>
-      <a href="/cars/new" >Add Listing</a>
-      <a href="/logout">LOG OUT</a>
+      <a class ="navBar" href="/cars/new" >Add Listing</a>
+      <a class="navBar" href="/logout">LOG OUT</a>
     <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <a class="navBar" href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
     <% } %>
   </nav>
   <main>

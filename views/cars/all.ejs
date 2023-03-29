@@ -1,4 +1,7 @@
 <%- include('../partials/header') %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 
 <h1 id="marketplace">Marketplace</h1>
     
@@ -29,7 +32,7 @@
       
            
          
-        <td><a href="/cars/<%= c._id %>"><button>View Listing</button></a></td>
+        <td><a href="/cars/<%= c._id %>"><button class="details">View Listing</button></a></td>
       </tr>
       <% }); %>
 </table>

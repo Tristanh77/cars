@@ -1,37 +1,20 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Year: </div>
-    <div>
-      <%= car.year %>
-    </div>
-    <div>Make: </div>
-    <div>
-      <%= car.make %>
-    </div>
-    <div>Model: </div>
-    <div>
-      <%= car.model %>
-    </div>
-    <div>Price: </div>
-    <div>
-      <%= car.price %>
-    </div>
-    <div>Miles: </div>
-    <div>
-      <%= car.miles %>
-    </div>
-    <div>Description: </div>
-    <div>
-      <%= car.description %>
-    </div>
+    <div>Year: <%= car.year %></div>
+    <div>Make: <%= car.make %> </div>
+    <div>Model: <%= car.model %></div>
+    <div>Price: <%= car.price %></div>
+    <div>Miles: <%= car.miles %></div>
+    <div>Description: <%= car.description %></div>
+    </section>
 
     <br><br>
   <h2>Questions</h2>
     <% if (user) { %>
         <form id="add-question-form" method="POST" action="/cars/<%= car._id %>/questions">
             <label>Ask a Question:</label>
-            <textarea name="content"></textarea>
+            <textarea class="response" name="content"></textarea>
             <input type="submit" value="Ask Question">
           </form>
           <% } else { %>
@@ -40,7 +23,7 @@
 
 
     <% if (car.questions.length) { %>
-      <table>
+      <table id="questionsTable">
         <thead>
           <tr>
             <th>User</th>
@@ -68,7 +51,7 @@
                   <td>
                     <% if (user && user._id.equals(r.userId)) { %>
                         <form action="/questions/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete</button>
+                        <button type="submit">Delete Question</button>
                       </form>
                     <% } %>
                   </td>
@@ -78,14 +61,14 @@
         </tbody>
       </table>
       <% } else { %>
-        <h5>No Questions Yet</h5>
+        <h5 id="noQ">No Questions Yet</h5>
         <% } %>
 
         <h2>Reviews</h2>
         <% if (user) { %>
           <form id="add-review-form" method="POST" action="/cars/<%= car._id %>/reviews">
             <label>Review:</label>
-            <textarea name="content"></textarea>
+             <textarea class="response" name="content" placeholder="Review"></textarea>
             <label>Rating:</label>
             <select name="rating">
               <option value="1">1</option>
@@ -99,7 +82,7 @@
           <% }; %>
 
           <% if (car.reviews.length) { %>
-            <table>
+            <table id="reviewTable">
               <thead>
                 <tr>
                   <th>Date</th>

@@ -1,21 +1,26 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Year: <%= car.year %></div>
-    <div>Make: <%= car.make %> </div>
-    <div>Model: <%= car.model %></div>
-    <div>Price: <%= car.price %></div>
-    <div>Miles: <%= car.miles %></div>
-    <div>Description: <%= car.description %></div>
+    <div class="carShow">Year: <%= car.year %></div>
+    <br>
+    <div class="carShow">Make: <%= car.make %> </div>
+    <br>
+    <div class="carShow">Model: <%= car.model %></div>
+    <br>
+    <div class="carShow">Price: <%= car.price %></div>
+    <br>
+    <div class="carShow">Miles: <%= car.miles %></div>
+    <br>
+    <div class="carShow">Description: <%= car.description %></div>
     </section>
 
     <br><br>
-  <h2>Questions</h2>
+  <section id="questionS"><h2 id="questionT">Questions</h2>
     <% if (user) { %>
         <form id="add-question-form" method="POST" action="/cars/<%= car._id %>/questions">
-            <label>Ask a Question:</label>
-            <textarea class="response" name="content"></textarea>
-            <input type="submit" value="Ask Question">
+            <textarea class="response" name="content" placeholder="Ask a Question"></textarea>
+            <br>
+            <input class="add" type="submit" value="Ask Question">
           </form>
           <% } else { %>
             Please log in to ask a question
@@ -51,7 +56,7 @@
                   <td>
                     <% if (user && user._id.equals(r.userId)) { %>
                         <form action="/questions/<%= r._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete Question</button>
+                        <button class="add" type="submit">Delete Question</button>
                       </form>
                     <% } %>
                   </td>
@@ -63,21 +68,23 @@
       <% } else { %>
         <h5 id="noQ">No Questions Yet</h5>
         <% } %>
-
-        <h2>Reviews</h2>
+  </section>
+        <section id="reviewS">
+            <h2 id="reviewT">Reviews</h2>
         <% if (user) { %>
           <form id="add-review-form" method="POST" action="/cars/<%= car._id %>/reviews">
-            <label>Review:</label>
+
              <textarea class="response" name="content" placeholder="Review"></textarea>
-            <label>Rating:</label>
-            <select name="rating">
+             <br>
+            <section id="addReview"><label>Rating:</label>
+            <select id="ratingValue" name="rating">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <input type="submit" value="Add Review">
+            <input class="add" type="submit" value="Add Review"></section>
           </form>
           <% }; %>
 
@@ -110,7 +117,7 @@
                         <td>
                           <% if (user && user._id.equals(r.userId)) { %>
                             <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                              <button type="submit">Delete Review</button>
+                              <button class="add" type="submit">Delete Review</button>
                             </form>
                           <% } %>
                         </td>
@@ -127,6 +134,7 @@
             <% } else { %>
               <h5>No Reviews Yet</h5>
               <% } %>
+        </section>
   
 
 

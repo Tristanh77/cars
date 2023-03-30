@@ -1,11 +1,14 @@
 <%- include('../partials/header') %>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+<section id="newCar">
 <form id="new-form" action="/cars" method="POST">
-  <label>Year:</label>
-  <input type="number" name="year">
+  <div id="newForm"><label>Year:</label>
+  <input class="new" type="number" name="year">
 
   <label>Make</label>
-  <select name="make">
+  <select class="new" id="makeSelector" name="make">
     <option value="Audi">Audi</option>
     <option value="BMW">BMW</option>
     <option value="Mercedes-Benz">Mercedes-Benz</option>
@@ -13,15 +16,15 @@
   </select>
 
   <label>Model:</label>
-  <input type="text" name="model">
+  <input class="new" type="text" name="model">
 
   <label>Price:</label>
-  <input type="text" name="price">
+  <input class="new" type="text" name="price">
 
   <label>Miles:</label>
-  <input type="number" name="miles">
-
-  <label>Description:</label>
-  <input type="text" name="description">
-  <input type="submit" value="Add Listing">
-</form>
+  <input class="new" type="number" name="miles"></div>
+<br>
+  <div id="addDescription"><label>Description:</label>
+  <input class="new" id="desc" type="text" name="description">
+  <input class="add" type="submit" value="Add Listing"></div>
+</form></section>

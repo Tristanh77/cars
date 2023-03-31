@@ -25,7 +25,7 @@ https://i.imgur.com/kU7Qa9O.png
 
 ---- Technologies Used ----
 
-Was created using a mix of ejs, javascript, css, mongoDb, and 3rd party api's.  
+Was created using a mix of ejs, javascript, css, mongoDb, nodeJs, mongoose and 3rd party api's.  
 
 ---- Deployable ----
 
